@@ -606,54 +606,51 @@ NAVBAR
 
     <div class="container">
 
-            <a class="navbar-brand" href="#">
-                E-Brain
-            </a>
+        <a class="navbar-brand" href="#">
+            E-Brain
+        </a>
 
-            <button class="navbar-toggler"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#menu">
+        <button class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#menu"
+                aria-controls="menu"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
 
             <span class="navbar-toggler-icon"></span>
 
         </button>
 
-    <div class="collapse navbar-collapse" id="menu">
+        <div class="collapse navbar-collapse" id="menu">
 
-<ul class="navbar-nav ms-auto align-items-lg-center">
+            <ul class="navbar-nav ms-auto align-items-lg-center">
 
-<li class="nav-item">
-<a class="nav-link" href="#home">Home</a>
-</li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#home">Home</a>
+                </li>
 
-<li class="nav-item">
-<a class="nav-link" href="#about">Tentang</a>
-</li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">Tentang</a>
+                </li>
 
-<li class="nav-item">
-<a class="nav-link" href="#program">Program</a>
-</li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#program">Program</a>
+                </li>
 
+                <li class="nav-item ms-lg-3">
+                    <a href="/login" class="btn-login">
+                        Masuk Sistem
+                    </a>
+                </li>
 
+            </ul>
 
-<li class="nav-item ms-lg-3">
+        </div>
 
-<a href="/login" class="btn-login">
-
-Masuk Sistem
-
-</a>
-
-</li>
-
-</ul>
-
-</div>
-
-</div>
+    </div>
 
 </nav>
-
 <!-- =========================
 HERO
 ========================= -->
@@ -1101,3 +1098,8 @@ dan meningkatkan prestasi akademik.
 
         </div>
 </footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
