@@ -1,68 +1,136 @@
 <!DOCTYPE html>
-
 <html>
+
 <head>
+
     <meta charset="utf-8">
 
-<style>
+    <title>
 
-    body{
-        font-family: DejaVu Sans, sans-serif;
-        font-size:11px;
+        Laporan Siswa
+
+    </title>
+
+    <style>
+    @page {
+        margin: 15px;
     }
 
-    .header{
-        text-align:center;
-        margin-bottom:20px;
+    body {
+        font-family: sans-serif;
+        font-size: 10px;
+        color: #333;
+        margin: 0;
+        padding: 0;
     }
 
-    .header h2{
-        margin:0;
-        padding:0;
+    .kop {
+        text-align: center;
+        margin-bottom: 10px;
     }
 
-    .header h3{
-        margin:5px 0;
-        padding:0;
+    .kop img {
+        width: 60px;
+        margin-bottom: 5px;
     }
 
-    .info{
-        width:100%;
-        margin-bottom:15px;
+    .kop h1 {
+        font-size: 18px;
+        font-weight: bold;
+        margin: 0;
     }
 
-    .info td{
-        border:none;
-        padding:3px;
-        text-align:left;
+    .kop p {
+        margin: 2px 0;
+        font-size: 11px;
     }
 
-    .laporan{
-        width:100%;
-        border-collapse:collapse;
+    hr {
+        border: 1px solid #000;
+        margin: 8px 0;
+    }
+
+   .judul {
+        text-align: center;
+    }
+
+    .judul h2 {
+        margin: 15px 0 25px 0;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .identitas {
+        margin-bottom: 12px;
+    }
+
+    .identitas table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .identitas td {
+        padding: 2px 0;
+        font-size: 10px;
+    }
+
+    .laporan {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 8px;
+        font-size: 10px;
     }
 
     .laporan th,
-    .laporan td{
-        border:1px solid #000;
-        padding:5px;
-        text-align:center;
+    .laporan td {
+        border: 1px solid #000;
+        padding: 4px;
+        text-align: center;
+        vertical-align: middle;
     }
 
-    .laporan th{
-        background-color:#f2f2f2;
-        font-weight:bold;
+    .laporan th {
+        background: #f2f2f2;
+        font-weight: bold;
     }
 
-    .nama{
-        text-align:left;
+    .ringkasan {
+        margin-top: 15px;
     }
 
-    .footer{
+    .ringkasan table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .ringkasan td {
+        padding: 2px 0;
+        font-size: 10px;
+    }
+
+    .ttd{
+        width:100%;
         margin-top:20px;
-        text-align:right;
-        font-size:10px;
     }
+
+    .ttd td{
+        width:50%;
+        text-align:center;
+        vertical-align:top;
+    }
+
+    .nama-ttd{
+        margin-top:60px;
+        font-weight:bold;
+        text-decoration:underline;
+    }
+
+    .footer {
+        margin-top: 50px;
+        text-align: right;
+        font-size: 9px;
+    }
+
 
 </style>
 
@@ -70,11 +138,31 @@
 
 <body>
 
-<div class="header">
+    {{-- ================= KOP ================= --}}
+    <div class="kop">
 
-    <h2>E-BRAIN KABANJAHE</h2>
+    <img src="{{ public_path('images/logo ebrain.png') }}">
 
-    <h3>
+    <h1>BIMBINGAN BELAJAR E-BRAIN</h1>
+
+    <p>
+        Jl. Jamin Ginting No. 19 & 21, Ketaren,
+        Kec. Kabanjahe, Kabupaten Karo,
+        Sumatera Utara 22111
+    </p>
+
+    <p>
+        Telp : 0813-6003-7196
+    </p>
+
+</div>
+
+<div style="border-top:2px solid #000;"></div>
+<div style="border-top:1px solid #000; margin-top:2px;"></div>
+
+<div class="judul">
+
+    <h2>
 
         @if(request('minggu_ke'))
 
@@ -86,7 +174,7 @@
 
         @endif
 
-    </h3>
+    </h2>
 
 </div>
 
@@ -221,10 +309,72 @@
 
 </table>
 
+<div class="mt-4 text-sm">
+    <p><strong>Keterangan:</strong></p>
+    <p>H = Hadir</p>
+    <p>I = Izin</p>
+    <p>S = Sakit</p>
+    <p>A = Alpha</p>
+    <p>Format H/H menunjukkan status kehadiran pada dua sesi pembelajaran dalam satu hari (Sesi 1 / Sesi 2).</p>
+</div>
+    <div style="margin-top:25px; font-size:10px;">
+        <b>Keterangan Validasi:</b><br>
+        Laporan ini dicetak oleh admin berdasarkan data absensi yang telah diinput oleh tentor melalui sistem informasi bimbingan belajar.
+    </div>
+
+<div style="margin-top:40px; width:100%;">
+
+    <table width="100%">
+        <tr>
+            <td width="50%"></td>
+            <td align="center">
+                Kabanjahe,
+                {{ now()->locale('id')->translatedFormat('d F Y') }}
+            </td>
+        </tr>
+    </table>
+
+    <table width="100%" style="margin-top:30px; border:none;">
+
+    <tr>
+
+        <td width="50%" align="center" style="border:none;">
+
+            Dicetak Oleh,
+            <br>
+            Admin
+            <br><br><br><br><br>
+
+            <u>
+                <b>{{ auth()->user()->name }}</b>
+            </u>
+
+        </td>
+
+        <td width="50%" align="center" style="border:none;">
+
+            Mengetahui,
+            <br>
+            Direktur E-Brain
+            <br><br><br><br><br>
+
+            <u>
+                <b>Elpis Brahmana, S.Pd., M.Psi., CNLP</b>
+            </u>
+
+        </td>
+
+    </tr>
+
+</table>
+
 <div class="footer">
 
-   Dicetak pada :
+    Dicetak pada :
     {{ now()->locale('id')->translatedFormat('d F Y H:i') }}
+
+</div>
+
 </div>
 
 

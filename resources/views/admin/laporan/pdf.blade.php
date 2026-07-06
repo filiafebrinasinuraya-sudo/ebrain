@@ -36,12 +36,13 @@
 
     .kop h1 {
         font-size: 18px;
+        font-weight: bold;
         margin: 0;
     }
 
     .kop p {
-        margin: 1px 0;
-        font-size: 10px;
+        margin: 2px 0;
+        font-size: 11px;
     }
 
     hr {
@@ -107,19 +108,27 @@
         font-size: 10px;
     }
 
-    .ttd {
-        width: 100%;
-        margin-top: 20px;
+    .ttd{
+        width:100%;
+        margin-top:20px;
     }
 
-    .ttd td {
-        width: 250px;
-        text-align: center;
+    .ttd td{
+        width:50%;
+        text-align:center;
+        vertical-align:top;
     }
 
-    .nama-ttd {
-        margin-top: 45px;
-        font-weight: bold;
+    .nama-ttd{
+        margin-top:60px;
+        font-weight:bold;
+        text-decoration:underline;
+    }
+
+    .footer {
+        margin-top: 50px;
+        text-align: right;
+        font-size: 9px;
     }
 </style>
 
@@ -130,41 +139,35 @@
     {{-- ================= KOP ================= --}}
     <div class="kop">
 
-        {{-- LOGO --}}
-        <img src="{{ public_path('images/logo ebrain.png') }}">
+    <img src="{{ public_path('images/logo ebrain.png') }}">
 
-        <h1>
+    <h1>BIMBINGAN BELAJAR E-BRAIN</h1>
 
-            BIMBINGAN BELAJAR E-BRAIN
+    <p>
+        Jl. Jamin Ginting No. 19 & 21, Ketaren,
+        Kec. Kabanjahe, Kabupaten Karo,
+        Sumatera Utara 22111
+    </p>
 
-        </h1>
+    <p>
+        Telp : 0813-6003-7196
+    </p>
 
-        <p>
+</div>
 
-            Jl.Jamin Ginting 19&21, Ketaren, Kec. Kabanjahe, Kabupaten Karo, Sumatera Utara 22111
+<div style="border-top:2px solid #000;"></div>
+<div style="border-top:1px solid #000; margin-top:2px;"></div>
 
-        </p>
+<div class="judul">
 
-        <p>
+    <h2>LAPORAN PERKEMBANGAN SISWA</h2>
 
-            Telp : 0813-6003-7196
+    <p>
+        Rekapitulasi Absensi dan Nilai Quiz Siswa
+    </p>
 
-        </p>
+</div>
 
-    </div>
-
-    <hr>
-
-    {{-- ================= JUDUL ================= --}}
-    <div class="judul">
-
-        <h2>
-            
-            LAPORAN PERKEMBANGAN SISWA
-
-        </h2>
-
-    </div>
 
     {{-- ================= IDENTITAS ================= --}}
     <div class="identitas">
@@ -339,154 +342,107 @@
     </table>
 
     {{-- ================= RINGKASAN ================= --}}
-    <div class="ringkasan">
+<div class="ringkasan">
 
-        <table>
-
-            <tr>
-
-                <td width="150">
-
-                    Total Hadir
-
-                </td>
-
-                <td width="10">
-
-                    :
-
-                </td>
-
-                <td>
-
-                    {{ $hadir }}
-
-                </td>
-
-            </tr>
-
-            <tr>
-
-                <td>
-
-                    Total Izin
-
-                </td>
-
-                <td>
-
-                    :
-
-                </td>
-
-                <td>
-
-                    {{ $izin }}
-
-                </td>
-
-            </tr>
-
-            <tr>
-
-                <td>
-
-                    Total Sakit
-
-                </td>
-
-                <td>
-
-                    :
-
-                </td>
-
-                <td>
-
-                    {{ $sakit }}
-
-                </td>
-
-            </tr>
-
-            <tr>
-
-                <td>
-
-                    Total Alpha
-
-                </td>
-
-                <td>
-
-                    :
-
-                </td>
-
-                <td>
-
-                    {{ $alpha }}
-
-                </td>
-
-            </tr>
-
-            <tr>
-
-                <td>
-
-                    Rata-rata Quiz
-
-                </td>
-
-                <td>
-
-                    :
-
-                </td>
-
-                <td>
-
-                    {{ $rataQuiz }}
-
-                </td>
-
-            </tr>
-
-            <tr>
-                <td>Persentase Kehadiran</td>
-                <td>:</td>
-                <td>{{ $persentaseKehadiran }}%</td>
-            </tr>
-
-        </table>
-
-    </div>
-
-    {{-- ================= TTD ================= --}}
-    <table class="ttd">
+    <table>
 
         <tr>
+            <td width="150">Total Hadir</td>
+            <td width="10">:</td>
+            <td>{{ $hadir }}</td>
+        </tr>
 
-            <td></td>
+        <tr>
+            <td>Total Izin</td>
+            <td>:</td>
+            <td>{{ $izin }}</td>
+        </tr>
 
-            <td>
+        <tr>
+            <td>Total Sakit</td>
+            <td>:</td>
+            <td>{{ $sakit }}</td>
+        </tr>
 
-                Mengetahui,
-                <br>
-                Direktur E-Brain
+        <tr>
+            <td>Total Alpha</td>
+            <td>:</td>
+            <td>{{ $alpha }}</td>
+        </tr>
 
-                <div class="nama-ttd">
+        <tr>
+            <td>Rata-rata Quiz</td>
+            <td>:</td>
+            <td>{{ $rataQuiz }}</td>
+        </tr>
 
-                    Elpis Brahmana, S.Pd., M.Psi., CNLP
-
-                </div>
-
-            </td>
-
+        <tr>
+            <td>Persentase Kehadiran</td>
+            <td>:</td>
+            <td>{{ $persentaseKehadiran }}%</td>
         </tr>
 
     </table>
+
+</div>
+
+
+
+{{-- ================= TANGGAL ================= --}}
+<table width="100%" style="margin-top:30px;">
+    <tr>
+        <td width="50%"></td>
+
+        <td align="center">
+            Kabanjahe, {{ now()->locale('id')->translatedFormat('d F Y') }}
+        </td>
+    </tr>
+</table>
+
+{{-- ================= TANDA TANGAN ================= --}}
+<table class="ttd">
+
+    <tr>
+
+        <td align="center">
+
+            Dicetak Oleh,<br>
+            Admin
+
+            <div class="nama-ttd">
+
+                {{ auth()->user()->name }}
+
+            </div>
+
+        </td>
+
+        <td align="center">
+
+            Mengetahui,<br>
+            Direktur E-Brain
+
+            <div class="nama-ttd">
+
+                Elpis Brahmana, S.Pd., M.Psi., CNLP
+
+            </div>
+
+        </td>
+
+    </tr>
+
+</table>
+
+{{-- ================= FOOTER ================= --}}
+<div class="footer">
+
+    Dicetak pada :
+    {{ now()->locale('id')->translatedFormat('d F Y H:i') }}
+
+</div>
+
+
 </body>
 
 </html>

@@ -223,6 +223,14 @@
             </tbody>
 
         </table>
+        <div class="mt-4 text-sm">
+            <p><strong>Keterangan:</strong></p>
+            <p>H = Hadir</p>
+            <p>I = Izin</p>
+            <p>S = Sakit</p>
+            <p>A = Alpha</p>
+            <p>Format H/H menunjukkan status kehadiran pada dua sesi pembelajaran dalam satu hari (Sesi 1 / Sesi 2).</p>
+        </div>
 
     </div>
 
