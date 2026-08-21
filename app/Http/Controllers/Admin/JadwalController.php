@@ -12,6 +12,7 @@ use App\Models\Ruangan;
 use App\Models\PeriodeJadwal;
 use App\Models\MataPelajaran;
 use App\Models\Sesi;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class JadwalController extends Controller
 {
@@ -519,5 +520,45 @@ class JadwalController extends Controller
         Jadwal::findOrFail($id)->delete();
 
         return back()->with('success', 'Jadwal berhasil dihapus');
+    }
+
+    public function exportPdf()
+    {
+        $periodeAktif = PeriodeJadwal::where('is_active', true)->first();
+
+        if (!$periodeAktif) {
+            return back()->with('error', 'Belum ada periode jadwal aktif');
+        }
+
+        $jadwal = Jadwal::with([
+            'periode',
+            'kelas',
+            'mataPelajaran',
+            'tentor',
+            'ruangan',
+            'sesi'
+        ])
+        ->where('periode_id', $periodeAktif->id)
+        ->orderByRaw("
+            FIELD(
+                hari,
+                'Senin',
+                'Selasa',
+                'Rabu',
+                'Kamis',
+                'Jumat',
+                'Sabtu'
+            )
+        ")
+        ->orderBy('sesi_id')
+        ->get();
+
+        $pdf = Pdf::loadView('admin.jadwal.pdf', compact(
+            'jadwal',
+            'periodeAktif'
+        ))
+        ->setPaper('A4', 'landscape');
+
+        return $pdf->stream('jadwal-periode-aktif.pdf');
     }
 }

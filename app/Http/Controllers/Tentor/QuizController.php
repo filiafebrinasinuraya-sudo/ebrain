@@ -22,7 +22,10 @@ class QuizController extends Controller
         | AMBIL SISWA
         |--------------------------------------------------------------------------
         */
-        $siswa = $jadwal->kelas->siswa;
+        $siswa = $jadwal->kelas->siswa()
+            ->where('status', 'Aktif')
+            ->orderBy('nama')
+            ->get();
 
         /*
         |--------------------------------------------------------------------------
@@ -196,7 +199,6 @@ class QuizController extends Controller
             ) {
 
                 continue;
-
             }
 
             NilaiQuiz::updateOrCreate(

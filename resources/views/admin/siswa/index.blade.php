@@ -8,10 +8,17 @@
         <p class="text-sm text-gray-500">Kelola semua data siswa E-Brain</p>
     </div>
 
-    <a href="/admin/siswa/create"
-       class="bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition">
-        + Tambah Siswa
-    </a>
+    <div class="flex gap-2">
+        <a href="{{ route('admin.siswa.export-pdf') }}"
+        class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition">
+            Cetak PDF
+        </a>
+
+        <a href="/admin/siswa/create"
+        class="bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition">
+            + Tambah Siswa
+        </a>
+    </div>
 </div>
 
 <!-- 🔍 SEARCH + FILTER -->

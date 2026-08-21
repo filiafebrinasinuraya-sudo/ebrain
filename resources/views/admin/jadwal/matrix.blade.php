@@ -95,6 +95,13 @@
         {{-- RIGHT --}}
         <div class="flex flex-wrap gap-2">
 
+            {{-- CETAK PDF --}}
+            <a href="{{ route('admin.jadwal.export-pdf') }}"
+                target="_blank"
+                class="px-4 py-2 text-sm rounded-xl bg-red-500 text-white hover:bg-red-600 transition shadow-sm">
+                    Cetak PDF
+            </a>
+
             {{-- LIST --}}
             <a href="{{ route('jadwal.index') }}"
                class="px-4 py-2 text-sm rounded-xl border border-gray-300 text-gray-700 hover:bg-gray-100 transition">

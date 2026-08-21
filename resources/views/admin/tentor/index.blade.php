@@ -3,19 +3,42 @@
 @section('content')
 
 <div class="flex justify-between items-center mb-6">
+
+    <!-- JUDUL -->
     <div>
-        <h2 class="text-xl font-bold text-gray-700">Data Tentor</h2>
+        <h2 class="text-xl font-bold text-gray-700">
+            Data Tentor
+        </h2>
+
         <p class="text-sm text-gray-500">
             Kelola semua data tentor E-Brain
         </p>
     </div>
 
-    <a href="/admin/tentor/create"
-        class="inline-flex items-center gap-2 bg-orange-500 text-white px-5 py-2.5 rounded-xl hover:bg-orange-600 transition shadow-sm">
+
+    <!-- TOMBOL -->
+    <div class="flex items-center gap-2">
+
+        <!-- CETAK PDF -->
+        <a href="{{ route('admin.tentor.export-pdf') }}"
+           target="_blank"
+           class="inline-flex items-center gap-2 bg-red-500 text-white px-5 py-2.5 rounded-xl hover:bg-red-600 transition shadow-sm">
+
+            <span>Cetak PDF</span>
+
+        </a>
+
+
+        <!-- TAMBAH TENTOR -->
+        <a href="/admin/tentor/create"
+           class="inline-flex items-center gap-2 bg-orange-500 text-white px-5 py-2.5 rounded-xl hover:bg-orange-600 transition shadow-sm">
 
             <span>Tambah Tentor</span>
 
         </a>
+
+    </div>
+
 </div>
 
 <!-- SEARCH -->

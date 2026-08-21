@@ -17,7 +17,10 @@ class AbsensiController extends Controller
     */
     public function create(Request $request, Jadwal $jadwal)
     {
-        $siswa = $jadwal->kelas->siswa;
+        $siswa = $jadwal->kelas->siswa()
+            ->where('status', 'Aktif')
+            ->orderBy('nama')
+            ->get();
 
         $tanggal = $request->tanggal ?? now()->toDateString();
 

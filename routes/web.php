@@ -72,6 +72,8 @@ Route::prefix('admin')
     Route::get('/siswa/{id}/edit', [SiswaController::class, 'edit']);
     Route::put('/siswa/{id}', [SiswaController::class, 'update']);
     Route::delete('/siswa/{id}', [SiswaController::class, 'destroy']);
+    Route::get('/admin/siswa/export-pdf', [SiswaController::class, 'exportPdf'])
+    ->name('admin.siswa.export-pdf');
     
     // ======================
     // TENTOR
@@ -82,6 +84,8 @@ Route::prefix('admin')
     Route::get('/tentor/{id}/edit', [TentorController::class, 'edit']);
     Route::put('/tentor/{id}', [TentorController::class, 'update']);
     Route::delete('/tentor/{id}', [TentorController::class, 'destroy']);
+    Route::get('/admin/tentor/export-pdf', [TentorController::class, 'exportPdf'])
+    ->name('admin.tentor.export-pdf');
 
     // ======================
     // PROGRAM
@@ -141,6 +145,8 @@ Route::prefix('admin')
     ->name('jadwal.mingguan.store');
     Route::get('/jadwal/matrix', [JadwalController::class, 'matrix'])
     ->name('jadwal.matrix');
+    Route::get('/admin/jadwal/export-pdf', [JadwalController::class, 'exportPdf'])
+    ->name('admin.jadwal.export-pdf');
     
     // periode//
     Route::get('/periode', [PeriodeJadwalController::class, 'index'])->name('periode.index');

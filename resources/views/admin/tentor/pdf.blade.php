@@ -1,0 +1,367 @@
+php
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+
+    <title>Data Tentor E-Brain</title>
+
+    <style>
+        @page {
+            margin: 25px 30px;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 11px;
+            color: #333;
+        }
+
+        /* =========================
+           KOP SURAT
+        ========================= */
+
+        .kop {
+            width: 100%;
+            border-bottom: 3px solid #000;
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+        }
+
+        .kop-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .kop-table td {
+            border: none;
+            vertical-align: middle;
+        }
+
+        .logo-cell {
+            width: 100px;
+            text-align: center;
+        }
+
+        .logo {
+            width: 75px;
+            height: auto;
+        }
+
+        .kop-text {
+            text-align: center;
+        }
+
+        .kop-text h1 {
+            margin: 0;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .kop-text h2 {
+            margin: 3px 0;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .kop-text p {
+            margin: 2px 0;
+            font-size: 9px;
+        }
+
+        /* =========================
+           JUDUL
+        ========================= */
+
+        .report-title {
+            text-align: center;
+            font-size: 15px;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+
+        /* =========================
+           TABEL
+        ========================= */
+
+        table.data {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table.data th {
+            background-color: #eeeeee;
+            border: 1px solid #555;
+            padding: 7px 5px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        table.data td {
+            border: 1px solid #777;
+            padding: 6px 5px;
+            vertical-align: middle;
+        }
+
+        table.data td.center {
+            text-align: center;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        .footer {
+            margin-top: 25px;
+        }
+
+        .footer-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .footer-table td {
+            border: none;
+        }
+
+        .date {
+            text-align: right;
+            font-size: 11px;
+        }
+
+        .signature {
+            margin-top: 45px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         KOP SURAT
+    ========================= -->
+
+    <div class="kop">
+
+        <table class="kop-table">
+
+            <tr>
+
+                <!-- LOGO -->
+                <td class="logo-cell">
+
+                    <img
+                        src="{{ public_path('images/logo ebrain.png') }}"
+                        class="logo"
+                    >
+
+                </td>
+
+                <!-- TEXT KOP -->
+                <td class="kop-text">
+
+                    <h1>
+                        BIMBINGAN BELAJAR E-BRAIN
+                    </h1>
+
+                    <h2>
+                        KABANJAHE
+                    </h2>
+
+                    <p>
+                        Jl. Jamin Ginting No. 19 & 21, Ketaren,
+                        Kec. Kabanjahe, Kabupaten Karo,
+                        Sumatera Utara 22111
+                    </p>
+
+                    <p>
+                        Telp : 0813-6003-7196
+                    </p>
+
+                </td>
+
+                <!-- RUANG KOSONG -->
+                <td style="width: 100px;"></td>
+
+            </tr>
+
+        </table>
+
+    </div>
+
+
+    <!-- =========================
+         JUDUL LAPORAN
+    ========================= -->
+
+    <div class="report-title">
+        DATA TENTOR BIMBINGAN BELAJAR E-BRAIN
+    </div>
+
+
+    <!-- =========================
+         TABEL DATA TENTOR
+    ========================= -->
+
+    <table class="data">
+
+        <thead>
+
+            <tr>
+
+                <th style="width: 35px;">
+                    No
+                </th>
+
+                <th>
+                    Nama Tentor
+                </th>
+
+                <th style="width: 55px;">
+                    Inisial
+                </th>
+
+                <th style="width: 50px;">
+                    JK
+                </th>
+
+                <th>
+                    No. HP
+                </th>
+
+                <th>
+                    Pendidikan Terakhir
+                </th>
+
+                <th>
+                    Jurusan
+                </th>
+
+                <th style="width: 60px;">
+                    Status
+                </th>
+
+            </tr>
+
+        </thead>
+
+
+        <tbody>
+
+            @forelse($tentor as $index => $t)
+
+                <tr>
+
+                    <!-- NO -->
+                    <td class="center">
+                        {{ $index + 1 }}
+                    </td>
+
+                    <!-- NAMA -->
+                    <td>
+                        {{ $t->nama ?? '-' }}
+                    </td>
+
+                    <!-- INISIAL -->
+                    <td class="center">
+                        {{ $t->inisial ?? '-' }}
+                    </td>
+
+                    <!-- JENIS KELAMIN -->
+                    <td class="center">
+                        {{ $t->jenis_kelamin ?? '-' }}
+                    </td>
+
+                    <!-- NO HP -->
+                    <td>
+                        {{ $t->no_hp ?? '-' }}
+                    </td>
+
+                    <!-- PENDIDIKAN -->
+                    <td>
+                        {{ $t->pendidikan_terakhir ?? '-' }}
+                    </td>
+
+                    <!-- JURUSAN -->
+                    <td>
+                        {{ $t->jurusan ?? '-' }}
+                    </td>
+
+                    <!-- STATUS -->
+                    <td class="center">
+
+                        @if($t->status)
+                            Aktif
+                        @else
+                            Tidak Aktif
+                        @endif
+
+                    </td>
+
+                </tr>
+
+            @empty
+
+                <tr>
+
+                    <td colspan="8" class="center">
+                        Data tentor tidak ditemukan
+                    </td>
+
+                </tr>
+
+            @endforelse
+
+        </tbody>
+
+    </table>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <div class="footer">
+
+        <table class="footer-table">
+
+            <tr>
+
+                <td style="width: 60%;"></td>
+
+                <td class="date">
+
+                    Kabanjahe,
+                    {{ now()->format('d') }}
+                    {{ [
+                        'Januari',
+                        'Februari',
+                        'Maret',
+                        'April',
+                        'Mei',
+                        'Juni',
+                        'Juli',
+                        'Agustus',
+                        'September',
+                        'Oktober',
+                        'November',
+                        'Desember'
+                    ][now()->month - 1] }}
+                    {{ now()->format('Y') }}
+
+                    <div class="signature">
+                        Admin E-Brain
+                    </div>
+
+                </td>
+
+            </tr>
+
+        </table>
+
+    </div>
+
+</body>
+</html>
+

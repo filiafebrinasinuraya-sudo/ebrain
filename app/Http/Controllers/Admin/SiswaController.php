@@ -9,6 +9,7 @@ use App\Models\Kelas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class SiswaController extends Controller
 {
@@ -236,5 +237,20 @@ class SiswaController extends Controller
         $siswa = Siswa::with('user', 'kelas')->findOrFail($id);
 
         return view('admin.siswa.detail', compact('siswa'));
+    }
+
+    /**
+     * EXPORT DATA SISWA KE PDF
+    */
+    public function exportPdf()
+    {
+        $siswa = Siswa::with('user', 'kelas')
+            ->latest()
+            ->get();
+
+        $pdf = Pdf::loadView('admin.siswa.pdf', compact('siswa'))
+            ->setPaper('A4', 'landscape');
+
+        return $pdf->stream('data-siswa.pdf');
     }
 }

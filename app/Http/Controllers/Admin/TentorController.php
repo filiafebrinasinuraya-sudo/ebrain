@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Tentor;
 use Illuminate\Support\Facades\Hash;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class TentorController extends Controller
 {
@@ -120,5 +121,20 @@ class TentorController extends Controller
         $tentor->delete();
 
         return redirect('/admin/tentor')->with('success', 'Data berhasil dihapus');
+    }
+
+    /**
+     * CETAK DATA TENTOR KE PDF
+    */
+    public function exportPdf()
+    {
+        $tentor = Tentor::with('user')
+            ->latest()
+            ->get();
+
+        $pdf = Pdf::loadView('admin.tentor.pdf', compact('tentor'))
+            ->setPaper('A4', 'landscape');
+
+        return $pdf->stream('data-tentor.pdf');
     }
 }
